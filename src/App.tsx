@@ -1,5 +1,5 @@
-import { useState } from "react";
 import { LoginPage } from "./pages/LoginPage";
+
 const App = () => {
   return <LoginPage />;
 };

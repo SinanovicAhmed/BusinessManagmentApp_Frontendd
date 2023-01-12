@@ -12,6 +12,7 @@ export const Input = ({ label, value, onChange, type }: Props) => {
   return (
     <div className="relative">
       <input
+        required
         onChange={handleChange}
         type={type}
         id="floating_input"
