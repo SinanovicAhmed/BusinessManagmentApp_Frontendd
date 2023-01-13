@@ -4,9 +4,6 @@ interface userLogin {
   username: string;
   password: string;
 }
-export const loginUser = async (
-  context: QueryFunctionContext<"user-login", userLogin>
-): Promise<{ message: string }> => {
-  const { user } = context.variables;
+export const loginUser = async (user: userLogin) => {
   return await axios.post("http://localhost:3000/api/user/login", user);
 };

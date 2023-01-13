@@ -6,6 +6,7 @@ import { Suppliers } from "./pages/Suppliers";
 import { Orders } from "./pages/Orders";
 import { Materials } from "./pages/Materials";
 import { Products } from "./pages/Products";
+import { Employees } from "./pages/Employees";
 const App = () => {
   return (
     <div>
@@ -20,7 +21,7 @@ const App = () => {
           <Route path="materials" element={<Materials />} />
           <Route path="products" element={<Products />} />
           <Route path="manufacturing" element={<Dashboard />} />
-          <Route path="employees" element={<Dashboard />} />
+          <Route path="employees" element={<Employees />} />
         </Route>
       </Routes>
     </div>

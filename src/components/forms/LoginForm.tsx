@@ -3,21 +3,23 @@ import { Input } from "../globalUI/Input";
 import { useState } from "react";
 import { ErrorAlert } from "../globalUI/ErrorAlert";
 import { useMutation } from "react-query";
-import axios from "axios";
+import { loginUser } from "../../services/api/userAPI";
+import { useNavigate } from "react-router-dom";
+
 interface ILoginData {
   username: string;
   password: string;
 }
 export const LoginForm = () => {
+  const nav = useNavigate();
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const loginData = { username: username, password: password };
 
   const { isLoading, isError, error, mutate } = useMutation(
-    (loginData: ILoginData) =>
-      axios.post("http://localhost:3000/api/user/login", loginData),
+    (loginData: ILoginData) => loginUser(loginData),
     {
-      onSuccess: () => console.log("success"), //redirect,
+      onSuccess: () => nav("/managment/dashboard"), //redirect,
     }
   );
 
