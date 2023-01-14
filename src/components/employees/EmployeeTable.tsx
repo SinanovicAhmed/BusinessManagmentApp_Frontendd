@@ -1,6 +1,13 @@
 import { EmployeeRow } from "./EmployeeRow";
-
+import { useQuery } from "react-query";
+import { getEmployees } from "../../services/api/employeeAPI";
+import { Loading } from "../globalUI/Loading";
 export const EmployeeTable = () => {
+  const { isLoading, isError, error, data } = useQuery(
+    "employees",
+    getEmployees
+  );
+  if (isLoading) return <Loading />;
   return (
     <div className="relative overflow-x-auto shadow-md sm:rounded-lg">
       <table className="w-full text-sm text-left text-gray-500">
@@ -16,13 +23,13 @@ export const EmployeeTable = () => {
               Email
             </th>
             <th scope="col" className="px-6 py-3">
-              Account
+              Contact
+            </th>
+            <th scope="col" className="px-4 py-3">
+              Employment
             </th>
             <th scope="col" className="px-4 py-3">
               Status
-            </th>
-            <th scope="col" className="px-4 py-3">
-              Role
             </th>
             <th scope="col" className="pl-2 py-3">
               Action
@@ -30,21 +37,9 @@ export const EmployeeTable = () => {
           </tr>
         </thead>
         <tbody>
-          <EmployeeRow />
-          <EmployeeRow />
-          <EmployeeRow />
-          <EmployeeRow />
-          <EmployeeRow />
-          <EmployeeRow />
-          <EmployeeRow />
-          <EmployeeRow />
-          <EmployeeRow />
-          <EmployeeRow />
-          <EmployeeRow />
-          <EmployeeRow />
-          <EmployeeRow />
-          <EmployeeRow />
-          <EmployeeRow />
+          {data?.map((el) => {
+            return <EmployeeRow key={el._id} {...el} />;
+          })}
         </tbody>
       </table>
     </div>

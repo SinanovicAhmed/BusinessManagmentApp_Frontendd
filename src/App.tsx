@@ -7,6 +7,7 @@ import { Orders } from "./pages/Orders";
 import { Materials } from "./pages/Materials";
 import { Products } from "./pages/Products";
 import { Employees } from "./pages/Employees";
+import { EmployeeDetails } from "./pages/EmployeeDetails";
 const App = () => {
   return (
     <div>
@@ -22,6 +23,7 @@ const App = () => {
           <Route path="products" element={<Products />} />
           <Route path="manufacturing" element={<Dashboard />} />
           <Route path="employees" element={<Employees />} />
+          <Route path="employeedetails/:id" element={<EmployeeDetails />} />
         </Route>
       </Routes>
     </div>

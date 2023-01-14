@@ -12,7 +12,7 @@ import { GiMining } from "react-icons/gi";
 export const Sidebar = () => {
   return (
     <aside className="w-64" aria-label="Sidebar">
-      <div className="px-3 py-4 overflow-y-auto rounded bg-gray-50 dark:bg-gray-800 h-screen">
+      <div className="px-3 py-4 overflow-y-auto w-[200px] rounded bg-gray-50 dark:bg-gray-800 h-screen">
         <a
           href="https://flowbite.com/"
           className="flex items-center pl-2.5 mb-5"
