@@ -29,7 +29,7 @@ export const LoginForm = () => {
         e.preventDefault();
         mutate(loginData);
       }}
-      className="relative max-w-[500px] w-[90%] md:min-w-[300px] md:w-[80%] h-[300px] p-[10px] flex flex-col justify-center gap-6"
+      className="relative max-w-[500px] w-[90%] md:min-w-[300px] md:w-[80%] h-[300px] p-[10px] flex flex-col justify-center items-center gap-6"
     >
       {isError && <ErrorAlert error={error} />}
       <Input

@@ -1,5 +1,5 @@
 import loginImage from "../assets/images/login-page-image.png";
-import { LoginForm } from "../components/forms/loginForm";
+import { LoginForm } from "../components/forms/LoginForm";
 export const LoginPage = () => {
   return (
     <div className="flex">

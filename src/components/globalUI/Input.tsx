@@ -10,7 +10,7 @@ export const Input = ({ label, value, onChange, type }: Props) => {
     onChange(e.target.value);
   };
   return (
-    <div className="relative">
+    <div className="relative w-[100%] max-w-[400px]">
       <input
         required
         onChange={handleChange}
