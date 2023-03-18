@@ -49,4 +49,18 @@ export const addSupplier = async (supplier: supplierPost) => {
   );
   return response;
 };
+export const getSupplierDetails = async (id: any): Promise<supplier> => {
+  const response = await axios.get(
+    "http://localhost:3000/api/supplier/supplier-details/" + id,
+    {
+      withCredentials: true,
+      headers: {
+        "Access-Control-Allow-Credentials": true,
+        "Access-Control-Allow-Origin": "http://localhost:5173",
+        "Content-Type": "application/json",
+      },
+    }
+  );
+  return response.data.supplier;
+};
 export type { supplier };

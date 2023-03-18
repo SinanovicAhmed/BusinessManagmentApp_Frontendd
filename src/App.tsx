@@ -8,6 +8,7 @@ import { Materials } from "./pages/Materials";
 import { Products } from "./pages/Products";
 import { Employees } from "./pages/Employees";
 import { EmployeeDetails } from "./pages/EmployeeDetails";
+import { SupplierDetails } from "./pages/SupplierDetails";
 const App = () => {
   return (
     <div>
@@ -18,6 +19,7 @@ const App = () => {
           {/*Routes that need sidebar*/}
           <Route path="dashboard" element={<Dashboard />} />
           <Route path="suppliers" element={<Suppliers />} />
+          <Route path="supplierdetails/:id" element={<SupplierDetails />} />
           <Route path="orders" element={<Orders />} />
           <Route path="materials" element={<Materials />} />
           <Route path="products" element={<Products />} />

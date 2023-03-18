@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link, To } from "react-router-dom";
 import { supplier } from "../../services/api/supplierAPI";
 export const SupplierRow = (props: supplier) => {
   return (
@@ -16,7 +16,16 @@ export const SupplierRow = (props: supplier) => {
       <td className="px-2 py-4">{props.contact_person}</td>
       <td className="pl-2 py-4">
         <a href="#" className="font-medium text-blue-600 hover:underline">
-          Edit
+          <Link
+            to={
+              {
+                pathname: "/managment/supplierdetails/" + props._id,
+                state: { id: props._id },
+              } as To
+            }
+          >
+            Details
+          </Link>
         </a>
       </td>
     </tr>

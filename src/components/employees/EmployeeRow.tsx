@@ -34,7 +34,7 @@ export const EmployeeRow = (props: employee) => {
               } as To
             }
           >
-            Edit
+            Details
           </Link>
         </a>
       </td>

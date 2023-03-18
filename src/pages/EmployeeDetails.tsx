@@ -1,6 +1,6 @@
 import { useParams } from "react-router-dom";
 import { Header } from "../components/globalUI/Header";
-import { DetailsHero } from "../components/employees/DetailsHero";
+import { DetailsHeroE } from "../components/employees/DetailsHeroE";
 export const EmployeeDetails = () => {
   const { id } = useParams();
 
@@ -10,7 +10,7 @@ export const EmployeeDetails = () => {
         header="Employee details"
         paragraph="More detailed view about employee and his website account."
       />
-      <DetailsHero id={id} />
+      <DetailsHeroE id={id} />
     </div>
   );
 };
