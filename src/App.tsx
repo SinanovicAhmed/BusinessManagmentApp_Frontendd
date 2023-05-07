@@ -9,6 +9,7 @@ import { Products } from "./pages/Products";
 import { Employees } from "./pages/Employees";
 import { EmployeeDetails } from "./pages/EmployeeDetails";
 import { SupplierDetails } from "./pages/SupplierDetails";
+import { AddEmployee } from "./pages/AddEmployee";
 const App = () => {
   return (
     <div>
@@ -25,6 +26,7 @@ const App = () => {
           <Route path="products" element={<Products />} />
           <Route path="manufacturing" element={<Dashboard />} />
           <Route path="employees" element={<Employees />} />
+          <Route path="addemployee" element={<AddEmployee />} />
           <Route path="employeedetails/:id" element={<EmployeeDetails />} />
         </Route>
       </Routes>

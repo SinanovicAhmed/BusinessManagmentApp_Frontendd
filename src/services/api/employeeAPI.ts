@@ -10,6 +10,14 @@ interface employee {
   employment_date: string;
   dismissal_date: string;
 }
+interface employeePost {
+  name: string;
+  surname: string;
+  contact_num: number | null;
+  adress: string;
+  email_adress: string;
+  employment_date: string;
+}
 interface user {
   _id: string;
   employee_id: string;
@@ -48,6 +56,22 @@ export const getEmployeeDetails = async (id: any): Promise<fullEmployee> => {
     }
   );
   return response.data;
+};
+
+export const addEmployees = async (employee: employeePost): Promise<string> => {
+  const response = await axios.post(
+    "http://localhost:3000/api/employee//add-employee",
+    employee,
+    {
+      withCredentials: true,
+      headers: {
+        "Access-Control-Allow-Credentials": true,
+        "Access-Control-Allow-Origin": "http://localhost:5173",
+        "Content-Type": "application/json",
+      },
+    }
+  );
+  return response.data?.message;
 };
 
 export type { employee, user, fullEmployee };
