@@ -3,10 +3,7 @@ import { useQuery } from "react-query";
 import { getEmployees } from "../../services/api/employeeAPI";
 import { Loading } from "../globalUI/Loading";
 export const EmployeeTable = () => {
-  const { isLoading, isError, error, data } = useQuery(
-    "employees",
-    getEmployees
-  );
+  const { isLoading, isError, error, data } = useQuery("employees", getEmployees);
   if (isLoading) return <Loading />;
   return (
     <div className="relative overflow-x-auto shadow-md sm:rounded-lg">
@@ -19,10 +16,10 @@ export const EmployeeTable = () => {
             <th scope="col" className="px-6 py-3">
               Adress
             </th>
-            <th scope="col" className="px-6 py-3">
+            <th scope="col" className="px-5 py-3">
               Email
             </th>
-            <th scope="col" className="px-6 py-3">
+            <th scope="col" className="px-4 py-3">
               Contact
             </th>
             <th scope="col" className="px-4 py-3">

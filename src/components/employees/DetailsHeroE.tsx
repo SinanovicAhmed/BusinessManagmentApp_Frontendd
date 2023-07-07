@@ -2,15 +2,22 @@ import { useQuery } from "react-query";
 import { getEmployeeDetails } from "../../services/api/employeeAPI";
 import { Button } from "../globalUI/Button";
 import { Loading } from "../globalUI/Loading";
+import { useNavigate } from "react-router-dom";
 
 interface id {
   id: string | undefined;
 }
 
 export const DetailsHeroE = ({ id }: id) => {
-  const { isLoading, isError, data, error } = useQuery(`employee-${id}`, () =>
+  const { isLoading, isError, data, error } = useQuery(["employee", id], () =>
     getEmployeeDetails(id)
   );
+
+  const navigate = useNavigate();
+
+  const createAccount = () => {
+    navigate("/managment/createaccount", { state: id });
+  };
 
   if (isLoading) return <Loading />;
   return (
@@ -40,7 +47,6 @@ export const DetailsHeroE = ({ id }: id) => {
                 </span>
               )}
             </span>
-            <Button name="Update details" type="button" />
           </div>
         ) : (
           <div className="max-w-[300px] bg-gray-100 rounded-lg flex flex-col justify-between items-center px-10">
@@ -50,14 +56,12 @@ export const DetailsHeroE = ({ id }: id) => {
             <p className="text-md text-gray-500 text-center pb-10">
               This employee doesnt have account!
             </p>
-            <Button name="Create account" type="button" />
+            <Button name="Create account" type="button" onClick={createAccount} />
           </div>
         )}
       </div>
       <div className="bg-gray-100 rounded-lg flex flex-col items-center justify-between p-10 flex-1">
-        <h2 className="text-[20px] text-gray-700 font-bold uppercase py-5 text-center">
-          Details
-        </h2>
+        <h2 className="text-[20px] text-gray-700 font-bold uppercase py-5 text-center">Details</h2>
         <div className="flex">
           <span className="px-[50px] pb-10">
             <p className="text-md text-gray-500">First Name</p>
@@ -69,17 +73,11 @@ export const DetailsHeroE = ({ id }: id) => {
           </span>
           <span className="px-[50px] pb-10">
             <p className="text-lg text-gray-500">Email</p>
-            <p className="mb-2 text-lg font-medium">
-              {data?.employee.email_adress}
-            </p>
+            <p className="mb-2 text-lg font-medium">{data?.employee.email_adress}</p>
             <p className="text-lg text-gray-500">Employment Date</p>
-            <p className="mb-2 text-lg font-medium">
-              {data?.employee.employment_date}
-            </p>
+            <p className="mb-2 text-lg font-medium">{data?.employee.employment_date}</p>
             <p className="text-md text-gray-500">Dismisal Date</p>
-            <p className="mb-2 text-lg font-medium">
-              {data?.employee.dismissal_date}
-            </p>
+            <p className="mb-2 text-lg font-medium">{data?.employee.dismissal_date}</p>
           </span>
         </div>
 

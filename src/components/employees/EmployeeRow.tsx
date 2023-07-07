@@ -3,15 +3,12 @@ import { Link, To } from "react-router-dom";
 export const EmployeeRow = (props: employee) => {
   return (
     <tr className="bg-white border-b">
-      <th
-        scope="row"
-        className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap"
-      >
+      <th scope="row" className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap">
         {props.name + " " + props.surname}
       </th>
       <td className="px-6 py-4">{props.adress}</td>
-      <td className="px-6 py-4">{props.email_adress}</td>
-      <td className="px-6 py-4">{props.contact_num}</td>
+      <td className="px-5 py-4">{props.email_adress}</td>
+      <td className="px-4 py-4">{props.contact_num}</td>
       <td className="px-4 py-4">{props.employment_date}</td>
       <td className="px-1.5 py-4">
         {props.dismissal_date === "" ? (

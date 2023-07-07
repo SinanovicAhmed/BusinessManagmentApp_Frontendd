@@ -10,6 +10,7 @@ import { Employees } from "./pages/Employees";
 import { EmployeeDetails } from "./pages/EmployeeDetails";
 import { SupplierDetails } from "./pages/SupplierDetails";
 import { AddEmployee } from "./pages/AddEmployee";
+import { AddAccount } from "./pages/AddAccount";
 const App = () => {
   return (
     <div>
@@ -28,6 +29,7 @@ const App = () => {
           <Route path="employees" element={<Employees />} />
           <Route path="addemployee" element={<AddEmployee />} />
           <Route path="employeedetails/:id" element={<EmployeeDetails />} />
+          <Route path="createaccount" element={<AddAccount />} />
         </Route>
       </Routes>
     </div>
