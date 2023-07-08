@@ -3,10 +3,7 @@ import { supplier } from "../../services/api/supplierAPI";
 export const SupplierRow = (props: supplier) => {
   return (
     <tr className="bg-white border-b">
-      <th
-        scope="row"
-        className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap"
-      >
+      <th scope="row" className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap">
         {props.supplier_name}
       </th>
       <td className="px-4 py-4">{props.email_adress}</td>
