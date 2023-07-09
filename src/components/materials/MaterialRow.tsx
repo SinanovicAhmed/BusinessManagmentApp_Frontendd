@@ -8,9 +8,9 @@ export const MaterialRow = ({ material }: { material: IMaterial }) => {
       </th>
       <td className="px-3 py-4">{material.quantity}</td>
       <td className="px-3 py-4">{material.min_quantity}</td>
-      <td className="px-3 py-4">{material.unit_of_measure}</td>
+      <td className="px-1 py-4">{material.unit_of_measure}</td>
       <td className="px-1.5 py-4">
-        {material.quantity > material.min_quantity ? (
+        {material.quantity! > material.min_quantity! ? (
           <span className="bg-green-100 text-green-800 text-xs font-medium mr-2 px-2.5 py-0.5 rounded">
             Enough
           </span>

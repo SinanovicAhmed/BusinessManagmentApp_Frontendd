@@ -5,7 +5,6 @@ import { MaterialRow } from "./MaterialRow";
 
 export const MaterialTable = () => {
   const { data, isLoading, error } = useQuery("materials", getMaterials);
-  console.log(data);
   return (
     <div className="relative overflow-x-auto shadow-md sm:rounded-lg">
       <table className="w-full text-sm text-left text-gray-500">
@@ -18,9 +17,9 @@ export const MaterialTable = () => {
               Quantity
             </th>
             <th scope="col" className="px-3 py-3">
-              minimal quantity
+              min quantity
             </th>
-            <th scope="col" className="px-3 py-3">
+            <th scope="col" className="px-1 py-3">
               Unit of measure
             </th>
             <th scope="col" className="px-3 py-3">
