@@ -1,6 +1,7 @@
 import { Link, To } from "react-router-dom";
-import { supplier } from "../../services/api/supplierAPI";
-export const SupplierRow = (props: supplier) => {
+import { ISupplier } from "../../services/Interfaces/supplier";
+
+export const SupplierRow = (props: ISupplier) => {
   return (
     <tr className="bg-white border-b">
       <th scope="row" className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap">

@@ -1,66 +1,37 @@
 import axios from "axios";
-interface supplier {
-  _id: string;
-  supplier_name: string;
-  UID: number;
-  VAT: number;
-  phone_number: number;
-  contact_person: string;
-  email_adress: string;
-  starting_date: string;
-  ending_date: string;
-}
-interface supplierPost {
-  supplier_name: string;
-  UID: number;
-  VAT: number;
-  phone_number: number;
-  contact_person: string;
-  email_adress: string;
-  starting_date: string;
-}
-export const getSuppliers = async (): Promise<supplier[]> => {
-  const response = await axios.get(
-    "http://localhost:3000/api/supplier/get-suppliers",
-    {
-      withCredentials: true,
-      headers: {
-        "Access-Control-Allow-Credentials": true,
-        "Access-Control-Allow-Origin": "http://localhost:5173",
-        "Content-Type": "application/json",
-      },
-    }
-  );
+import { ISupplier, ISupplierPost } from "../Interfaces/supplier";
+
+export const getSuppliers = async (): Promise<ISupplier[]> => {
+  const response = await axios.get("http://localhost:3000/api/supplier/get-suppliers", {
+    withCredentials: true,
+    headers: {
+      "Access-Control-Allow-Credentials": true,
+      "Access-Control-Allow-Origin": "http://localhost:5173",
+      "Content-Type": "application/json",
+    },
+  });
   return response.data;
 };
 
-export const addSupplier = async (supplier: supplierPost) => {
-  const response = await axios.post(
-    "http://localhost:3000/api/supplier/add-supplier",
-    supplier,
-    {
-      withCredentials: true,
-      headers: {
-        "Access-Control-Allow-Credentials": true,
-        "Access-Control-Allow-Origin": "http://localhost:5173",
-        "Content-Type": "application/json",
-      },
-    }
-  );
+export const addSupplier = async (supplier: ISupplierPost) => {
+  const response = await axios.post("http://localhost:3000/api/supplier/add-supplier", supplier, {
+    withCredentials: true,
+    headers: {
+      "Access-Control-Allow-Credentials": true,
+      "Access-Control-Allow-Origin": "http://localhost:5173",
+      "Content-Type": "application/json",
+    },
+  });
   return response;
 };
-export const getSupplierDetails = async (id: any): Promise<supplier> => {
-  const response = await axios.get(
-    "http://localhost:3000/api/supplier/supplier-details/" + id,
-    {
-      withCredentials: true,
-      headers: {
-        "Access-Control-Allow-Credentials": true,
-        "Access-Control-Allow-Origin": "http://localhost:5173",
-        "Content-Type": "application/json",
-      },
-    }
-  );
+export const getSupplierDetails = async (id: any): Promise<ISupplier> => {
+  const response = await axios.get("http://localhost:3000/api/supplier/supplier-details/" + id, {
+    withCredentials: true,
+    headers: {
+      "Access-Control-Allow-Credentials": true,
+      "Access-Control-Allow-Origin": "http://localhost:5173",
+      "Content-Type": "application/json",
+    },
+  });
   return response.data.supplier;
 };
-export type { supplier };
