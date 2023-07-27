@@ -2,9 +2,13 @@ import { useQuery } from "react-query";
 import { getMaterials } from "../../services/api/materialAPI";
 import { useState } from "react";
 import { MaterialRow } from "./MaterialRow";
+import { Loading } from "../globalUI/Loading";
 
 export const MaterialTable = () => {
   const { data, isLoading, error } = useQuery("materials", getMaterials);
+
+  if (isLoading) return <Loading />;
+
   return (
     <div className="relative overflow-x-auto shadow-md sm:rounded-lg">
       <table className="w-full text-sm text-left text-gray-500">

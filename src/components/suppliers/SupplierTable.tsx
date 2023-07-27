@@ -1,12 +1,12 @@
 import { SupplierRow } from "./SupplierRow";
 import { getSuppliers } from "../../services/api/supplierAPI";
 import { useQuery } from "react-query";
+import { Loading } from "../globalUI/Loading";
+
 export const SupplierTable = () => {
-  const { data, error, isLoading, isError } = useQuery(
-    "suppliers",
-    getSuppliers
-  );
-  console.log(data);
+  const { data, error, isLoading, isError } = useQuery("suppliers", getSuppliers);
+
+  if (isLoading) return <Loading />;
 
   return (
     <div className="relative overflow-x-auto shadow-md sm:rounded-lg">

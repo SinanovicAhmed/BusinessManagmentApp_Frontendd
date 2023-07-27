@@ -12,3 +12,8 @@ export interface IOrder {
   expected_arrival: Date;
   __v: 0;
 }
+
+export interface IOrderStatus {
+  id: string | undefined;
+  status: string | undefined;
+}

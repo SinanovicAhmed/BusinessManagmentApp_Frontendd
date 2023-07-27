@@ -1,10 +1,12 @@
 import { useQuery } from "react-query";
 import { getOrders } from "../../services/api/orderAPI";
 import { OrdersRow } from "./OrdersRow";
+import { Loading } from "../globalUI/Loading";
 
 export const OrdersTable = () => {
   const { data, isLoading, isError } = useQuery("orders", getOrders);
-  console.log(data);
+
+  if (isLoading) return <Loading />;
   return (
     <div className="relative overflow-x-auto shadow-md sm:rounded-lg">
       <table className="w-full text-sm text-left text-gray-500">

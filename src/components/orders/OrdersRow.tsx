@@ -1,3 +1,4 @@
+import { Link, To } from "react-router-dom";
 import { IOrder } from "../../services/Interfaces/order";
 
 export const OrdersRow = ({ order }: { order: IOrder }) => {
@@ -19,13 +20,11 @@ export const OrdersRow = ({ order }: { order: IOrder }) => {
         {order.ordered_materials[1]?.material_id.material_name && (
           <>
             <br />
-            <br />
             {"2. " + order.ordered_materials[1].material_id.material_name}
           </>
         )}
         {order.ordered_materials[2]?.material_id.material_name && (
           <>
-            <br />
             <br />
             {"3. " + order.ordered_materials[2].material_id.material_name}
           </>
@@ -33,28 +32,41 @@ export const OrdersRow = ({ order }: { order: IOrder }) => {
       </td>
       <td className="px-1 py-4">
         {order.ordered_materials[0].quantity +
+          " " +
           order.ordered_materials[0].material_id.unit_of_measure}
         {order.ordered_materials[1]?.quantity && (
           <>
             <br />
-            <br />
             {order.ordered_materials[1].quantity +
+              " " +
               order.ordered_materials[1].material_id.unit_of_measure}
           </>
         )}
         {order.ordered_materials[2]?.quantity && (
           <>
             <br />
-            <br />
             {order.ordered_materials[2].quantity +
+              " " +
               order.ordered_materials[2].material_id.unit_of_measure}
           </>
         )}
       </td>
       <td className="px-1 py-4">{exp_arrival_date}</td>
       <td className="px-2 py-4">{order.order_status}</td>
-      <td className="pl-2 py-4">
-        <a href="#" className="font-medium text-blue-600 hover:underline"></a>
+
+      <td className="pl-2 py-3">
+        <a href="#" className="font-medium text-blue-600 hover:underline">
+          <Link
+            to={
+              {
+                pathname: `/managment/orderdetails/${order._id}`,
+                state: { order },
+              } as To
+            }
+          >
+            Details
+          </Link>
+        </a>
       </td>
     </tr>
   );
