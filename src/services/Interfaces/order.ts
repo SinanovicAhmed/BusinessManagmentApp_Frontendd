@@ -14,6 +14,6 @@ export interface IOrder {
 }
 
 export interface IOrderStatus {
-  id: string | undefined;
-  status: string | undefined;
+  id: string;
+  status: string;
 }

@@ -1,13 +1,13 @@
-import { Link, To } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { IOrder } from "../../services/Interfaces/order";
-
+import { formatDate } from "../../helpers/formatDate";
 export const OrdersRow = ({ order }: { order: IOrder }) => {
-  const date = new Date(order.expected_arrival);
-  const exp_arrival_date = date.toLocaleDateString("en-us", {
-    year: "numeric",
-    month: "short",
-    day: "numeric",
-  });
+  const navigate = useNavigate();
+  const expected_arrival = formatDate(order.expected_arrival);
+
+  const navigateToDetails = () => {
+    navigate(`/managment/orderdetails/${order._id}`, { state: { order } });
+  };
 
   return (
     <tr className="bg-white border-b">
@@ -31,42 +31,27 @@ export const OrdersRow = ({ order }: { order: IOrder }) => {
         )}
       </td>
       <td className="px-1 py-4">
-        {order.ordered_materials[0].quantity +
-          " " +
-          order.ordered_materials[0].material_id.unit_of_measure}
+        {order.ordered_materials[0].quantity + " " + order.ordered_materials[0].material_id.unit_of_measure}
         {order.ordered_materials[1]?.quantity && (
           <>
             <br />
-            {order.ordered_materials[1].quantity +
-              " " +
-              order.ordered_materials[1].material_id.unit_of_measure}
+            {order.ordered_materials[1].quantity + " " + order.ordered_materials[1].material_id.unit_of_measure}
           </>
         )}
         {order.ordered_materials[2]?.quantity && (
           <>
             <br />
-            {order.ordered_materials[2].quantity +
-              " " +
-              order.ordered_materials[2].material_id.unit_of_measure}
+            {order.ordered_materials[2].quantity + " " + order.ordered_materials[2].material_id.unit_of_measure}
           </>
         )}
       </td>
-      <td className="px-1 py-4">{exp_arrival_date}</td>
+      <td className="px-1 py-4">{expected_arrival}</td>
       <td className="px-2 py-4">{order.order_status}</td>
 
       <td className="pl-2 py-3">
-        <a href="#" className="font-medium text-blue-600 hover:underline">
-          <Link
-            to={
-              {
-                pathname: `/managment/orderdetails/${order._id}`,
-                state: { order },
-              } as To
-            }
-          >
-            Details
-          </Link>
-        </a>
+        <button className="font-medium text-blue-600 hover:underline" onClick={navigateToDetails}>
+          Details
+        </button>
       </td>
     </tr>
   );

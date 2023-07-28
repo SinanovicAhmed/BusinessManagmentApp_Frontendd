@@ -5,3 +5,8 @@ export interface IMaterial {
   quantity: number | null;
   unit_of_measure: string;
 }
+
+export interface IMaterialOrder {
+  material_id: IMaterial;
+  quantity: number;
+}
