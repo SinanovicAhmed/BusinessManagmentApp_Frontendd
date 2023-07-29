@@ -16,20 +16,20 @@ export const SupplierTable = () => {
             <th scope="col" className="px-6 py-3">
               Name
             </th>
+            <th scope="col" className="px-2 py-3">
+              Contact person
+            </th>
             <th scope="col" className="px-4 py-3">
               Email
+            </th>
+            <th scope="col" className="px-2 py-3">
+              Contact
             </th>
             <th scope="col" className="px-4 py-3">
               UID
             </th>
             <th scope="col" className="px-4 py-3">
               VAT
-            </th>
-            <th scope="col" className="px-2 py-3">
-              Contact
-            </th>
-            <th scope="col" className="px-2 py-3">
-              Contact person
             </th>
             <th scope="col" className="pl-2 py-3">
               Action

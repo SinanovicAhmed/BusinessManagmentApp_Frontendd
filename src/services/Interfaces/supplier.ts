@@ -3,7 +3,7 @@ export interface ISupplier {
   supplier_name: string;
   UID: number;
   VAT: number;
-  phone_number: number;
+  phone_number: string;
   contact_person: string;
   email_adress: string;
   starting_date: string;
@@ -12,9 +12,9 @@ export interface ISupplier {
 
 export interface ISupplierPost {
   supplier_name: string;
-  UID: number;
-  VAT: number;
-  phone_number: number;
+  UID: number | null;
+  VAT: number | null;
+  phone_number: string;
   contact_person: string;
   email_adress: string;
   starting_date: string;

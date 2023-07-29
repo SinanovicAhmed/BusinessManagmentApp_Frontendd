@@ -13,6 +13,7 @@ import { AddEmployee } from "./pages/AddEmployee";
 import { AddAccount } from "./pages/AddAccount";
 import { AddMaterial } from "./pages/AddMaterial";
 import { OrderDetails } from "./pages/OrderDetails";
+import { AddSupplier } from "./pages/AddSupplier";
 const App = () => {
   return (
     <div>
@@ -24,16 +25,16 @@ const App = () => {
           <Route path="dashboard" element={<Dashboard />} />
           <Route path="suppliers" element={<Suppliers />} />
           <Route path="supplierdetails/:id" element={<SupplierDetails />} />
+          <Route path="addsupplier" element={<AddSupplier />} />
           <Route path="orders" element={<Orders />} />
+          <Route path="orderdetails/:id" element={<OrderDetails />} />
           <Route path="materials" element={<Materials />} />
+          <Route path="addmaterial" element={<AddMaterial />} />
           <Route path="products" element={<Products />} />
-          <Route path="manufacturing" element={<Dashboard />} />
           <Route path="employees" element={<Employees />} />
           <Route path="addemployee" element={<AddEmployee />} />
           <Route path="employeedetails/:id" element={<EmployeeDetails />} />
           <Route path="createaccount" element={<AddAccount />} />
-          <Route path="addmaterial" element={<AddMaterial />} />
-          <Route path="orderdetails/:id" element={<OrderDetails />} />
         </Route>
       </Routes>
     </div>

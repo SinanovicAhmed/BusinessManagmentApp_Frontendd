@@ -9,9 +9,7 @@ interface id {
 }
 
 export const DetailsHeroE = ({ id }: id) => {
-  const { isLoading, isError, data, error } = useQuery(["employee", id], () =>
-    getEmployeeDetails(id)
-  );
+  const { isLoading, isError, data, error } = useQuery(["employee", id], () => getEmployeeDetails(id));
 
   const navigate = useNavigate();
 
@@ -21,22 +19,19 @@ export const DetailsHeroE = ({ id }: id) => {
 
   if (isLoading) return <Loading />;
   return (
-    <div className="w-[100%] max-w-[1500px] flex justify-around">
-      <div className="bg-gray-100 rounded-lg flex flex-col items-center p-10">
-        <img
-          src="https://www.pngarts.com/files/10/Default-Profile-Picture-Transparent-Image.png"
-          className="w-[200px]"
-        />
+    <div className="flex justify-center pr-5">
+      <div className="bg-gray-100 rounded-lg p-5 mr-5">
         {data?.user !== null ? (
-          <div className="max-w-[300px] bg-gray-100 rounded-lg flex flex-col justify-between items-center px-10">
-            <h2 className="text-[20px] text-gray-700 font-bold uppercase py-5 text-center">
-              Account Details
-            </h2>
-
+          <div className="bg-gray-100 rounded-lg flex flex-col justify-between items-center px-10 pt-5">
+            <h2 className="text-[20px] text-gray-700 font-bold uppercase text-center">Account Details</h2>
             <span className="pb-10 w-[100%]">
-              <p className="text-md text-gray-500">Username</p>
+              <img
+                src="https://www.pngarts.com/files/10/Default-Profile-Picture-Transparent-Image.png"
+                className="w-[200px] py-5"
+              />
+              <p className="text-md text-gray-500">Username:</p>
               <p className="mb-2 text-lg font-medium">{data?.user?.username}</p>
-              <p className="text-lg text-gray-500">Role</p>
+              <p className="text-md text-gray-500">Role:</p>
               {data?.user?.role === "ADMIN" ? (
                 <span className="bg-red-100 text-red-800 text-xs font-medium mr-2 px-2.5 py-0.5 rounded">
                   ADMIN
@@ -49,34 +44,32 @@ export const DetailsHeroE = ({ id }: id) => {
             </span>
           </div>
         ) : (
-          <div className="max-w-[300px] bg-gray-100 rounded-lg flex flex-col justify-between items-center px-10">
+          <div className="h-[100%] bg-gray-100 rounded-lg flex flex-col justify-between items-center px-10">
             <h2 className="text-[20px] text-gray-700 font-bold uppercase py-5 text-center">
               Account Details
             </h2>
-            <p className="text-md text-gray-500 text-center pb-10">
-              This employee doesnt have account!
-            </p>
+            <p className="text-md text-gray-500 text-center pb-10">This employee doesnt have account!</p>
             <Button name="Create account" type="button" onClick={createAccount} />
           </div>
         )}
       </div>
-      <div className="bg-gray-100 rounded-lg flex flex-col items-center justify-between p-10 flex-1">
+      <div className="bg-gray-100 rounded-lg flex flex-col items-center justify-between p-5">
         <h2 className="text-[20px] text-gray-700 font-bold uppercase py-5 text-center">Details</h2>
         <div className="flex">
-          <span className="px-[50px] pb-10">
-            <p className="text-md text-gray-500">First Name</p>
+          <span className="px-[80px] pb-10">
+            <p className="text-md text-gray-500">First Name:</p>
             <p className="mb-2 text-lg font-medium">{data?.employee.name}</p>
-            <p className="text-lg text-gray-500">Last Name</p>
+            <p className="text-md text-gray-500">Last Name:</p>
             <p className="mb-2 text-lg font-medium">{data?.employee.surname}</p>
-            <p className="text-md text-gray-500">Adress</p>
+            <p className="text-md text-gray-500">Adress:</p>
             <p className="mb-2 text-lg font-medium">{data?.employee.adress}</p>
           </span>
-          <span className="px-[50px] pb-10">
-            <p className="text-lg text-gray-500">Email</p>
+          <span className="px-[80px] pb-10">
+            <p className="text-md text-gray-500">Email:</p>
             <p className="mb-2 text-lg font-medium">{data?.employee.email_adress}</p>
-            <p className="text-lg text-gray-500">Employment Date</p>
+            <p className="text-,d text-gray-500">Employment Date:</p>
             <p className="mb-2 text-lg font-medium">{data?.employee.employment_date}</p>
-            <p className="text-md text-gray-500">Dismisal Date</p>
+            <p className="text-md text-gray-500">Dismisal Date:</p>
             <p className="mb-2 text-lg font-medium">{data?.employee.dismissal_date}</p>
           </span>
         </div>
