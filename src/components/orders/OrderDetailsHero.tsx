@@ -1,7 +1,7 @@
 import { useMutation, useQuery } from "react-query";
-import { changeOrderStatus, getOrderDetails } from "../../services/api/orderAPI";
+import { changeOrderStatus, finishOrder, getOrderDetails } from "../../services/api/orderAPI";
 import { useState } from "react";
-import { IOrder, IOrderStatus } from "../../services/Interfaces/order";
+import { IOrder, IOrderMaterials, IOrderStatus } from "../../services/Interfaces/order";
 import { formatDate } from "../../helpers/formatDate";
 import { MaterialList } from "./MaterialList";
 
@@ -9,17 +9,23 @@ const statusOptions = ["Processing", "In transit", "Canceled", "Delivered"];
 
 export const OrderDetailsHero: React.FC<{ order: IOrder }> = ({ order }) => {
   const [orderStatus, setOrderStatus] = useState(order?.order_status);
-  const { mutate } = useMutation((orderData: IOrderStatus) => changeOrderStatus(orderData), {
+
+  const { mutate: completeOrder } = useMutation((orderMaterials: IOrderMaterials[]) =>
+    finishOrder(orderMaterials)
+  );
+
+  const { mutate: changeStatus } = useMutation((orderData: IOrderStatus) => changeOrderStatus(orderData), {
     onSuccess: (data) => {
-      if (data) {
-        setOrderStatus(data.order_status);
+      if (data?.order_status === "Delivered") {
+        completeOrder(data.ordered_materials);
       }
+      setOrderStatus(data.order_status);
     },
   });
 
   const updateOrderStatus = (status: string) => {
     if (order) {
-      mutate({ id: order._id, status: status });
+      changeStatus({ id: order._id, status: status });
     }
   };
 
@@ -72,7 +78,9 @@ export const OrderDetailsHero: React.FC<{ order: IOrder }> = ({ order }) => {
                     ))}
                   </select>
                 ) : (
-                  <span className="text-gray-500 text-[20px]">{orderStatus}</span>
+                  <span className="bg-green-100 text-green-800 text-md font-medium mr-2 px-2.5 py-0.5 rounded">
+                    {orderStatus}
+                  </span>
                 )}
               </span>
               <span>

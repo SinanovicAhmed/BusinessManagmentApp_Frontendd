@@ -1,5 +1,5 @@
 import axios from "axios";
-import { IOrder, IOrderStatus } from "../Interfaces/order";
+import { IOrder, IOrderDB, IOrderMaterials, IOrderStatus } from "../Interfaces/order";
 
 export const getOrders = async (): Promise<IOrder[]> => {
   const response = await axios.get("http://localhost:3000/api/order/get-orders", {
@@ -25,18 +25,26 @@ export const getOrderDetails = async (id: any): Promise<IOrder> => {
   return response.data.order;
 };
 
-export const changeOrderStatus = async (orderData: IOrderStatus): Promise<IOrder> => {
-  const response = await axios.patch(
-    "http://localhost:3000/api/order/update-orderstatus",
-    orderData,
-    {
-      withCredentials: true,
-      headers: {
-        "Access-Control-Allow-Credentials": true,
-        "Access-Control-Allow-Origin": "http://localhost:5173",
-        "Content-Type": "application/json",
-      },
-    }
-  );
+export const changeOrderStatus = async (orderData: IOrderStatus): Promise<IOrderDB> => {
+  const response = await axios.patch("http://localhost:3000/api/order/update-orderstatus", orderData, {
+    withCredentials: true,
+    headers: {
+      "Access-Control-Allow-Credentials": true,
+      "Access-Control-Allow-Origin": "http://localhost:5173",
+      "Content-Type": "application/json",
+    },
+  });
   return response.data?.order;
+};
+
+export const finishOrder = async (orderMaterials: IOrderMaterials[]): Promise<any> => {
+  const response = await axios.patch("http://localhost:3000/api/order/finish-order", orderMaterials, {
+    withCredentials: true,
+    headers: {
+      "Access-Control-Allow-Credentials": true,
+      "Access-Control-Allow-Origin": "http://localhost:5173",
+      "Content-Type": "application/json",
+    },
+  });
+  return response.data?.message;
 };

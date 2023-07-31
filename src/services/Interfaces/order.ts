@@ -10,10 +10,25 @@ export interface IOrder {
   }>;
   order_status: string;
   expected_arrival: Date;
-  __v: 0;
+}
+
+export interface IOrderDB {
+  _id: string;
+  supplier_id: string;
+  ordered_materials: Array<{
+    material_id: string;
+    quantity: number;
+  }>;
+  order_status: string;
+  expected_arrival: Date;
 }
 
 export interface IOrderStatus {
   id: string;
   status: string;
+}
+
+export interface IOrderMaterials {
+  material_id: string;
+  quantity: number;
 }
