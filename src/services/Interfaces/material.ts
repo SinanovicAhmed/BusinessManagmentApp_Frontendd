@@ -10,3 +10,8 @@ export interface IMaterialOrder {
   material_id: IMaterial;
   quantity: number;
 }
+
+export interface IMaterialOrderPost {
+  material_id: string;
+  quantity: number;
+}

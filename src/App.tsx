@@ -14,6 +14,7 @@ import { AddAccount } from "./pages/AddAccount";
 import { AddMaterial } from "./pages/AddMaterial";
 import { OrderDetails } from "./pages/OrderDetails";
 import { AddSupplier } from "./pages/AddSupplier";
+import { AddOrder } from "./pages/AddOrder";
 const App = () => {
   return (
     <div>
@@ -28,6 +29,7 @@ const App = () => {
           <Route path="addsupplier" element={<AddSupplier />} />
           <Route path="orders" element={<Orders />} />
           <Route path="orderdetails/:id" element={<OrderDetails />} />
+          <Route path="addorder" element={<AddOrder />} />
           <Route path="materials" element={<Materials />} />
           <Route path="addmaterial" element={<AddMaterial />} />
           <Route path="products" element={<Products />} />

@@ -1,4 +1,4 @@
-import { IMaterial } from "./material";
+import { IMaterial, IMaterialOrderPost } from "./material";
 import { ISupplier } from "./supplier";
 
 export interface IOrder {
@@ -31,4 +31,11 @@ export interface IOrderStatus {
 export interface IOrderMaterials {
   material_id: string;
   quantity: number;
+}
+
+export interface IOrderPost {
+  supplier_id: string;
+  order_status: string;
+  expected_arrival: Date;
+  ordered_materials: IMaterialOrderPost[];
 }
