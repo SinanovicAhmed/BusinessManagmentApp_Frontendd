@@ -35,18 +35,33 @@ export const OrdersRow = ({ order }: { order: IOrder }) => {
         {order.ordered_materials[1]?.quantity && (
           <>
             <br />
-            {order.ordered_materials[1].quantity + " " + order.ordered_materials[1].material_id.unit_of_measure}
+            {order.ordered_materials[1].quantity +
+              " " +
+              order.ordered_materials[1].material_id.unit_of_measure}
           </>
         )}
         {order.ordered_materials[2]?.quantity && (
           <>
             <br />
-            {order.ordered_materials[2].quantity + " " + order.ordered_materials[2].material_id.unit_of_measure}
+            {order.ordered_materials[2].quantity +
+              " " +
+              order.ordered_materials[2].material_id.unit_of_measure}
           </>
         )}
       </td>
       <td className="px-1 py-4">{expected_arrival}</td>
-      <td className="px-2 py-4">{order.order_status}</td>
+
+      <td className="py-3">
+        {order.order_status === "Delivered" ? (
+          <span className="bg-green-100 text-green-800 text-xs font-medium mr-2 px-2.5 py-0.5 rounded">
+            {order.order_status}
+          </span>
+        ) : (
+          <span className="bg-gray-200 text-xs font-medium mr-2 px-2.5 py-0.5 rounded">
+            {order.order_status}
+          </span>
+        )}
+      </td>
 
       <td className="pl-2 py-3">
         <button className="font-medium text-blue-600 hover:underline" onClick={navigateToDetails}>

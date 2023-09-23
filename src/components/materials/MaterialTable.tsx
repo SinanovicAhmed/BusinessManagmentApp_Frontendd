@@ -37,7 +37,7 @@ export const MaterialTable = () => {
         </thead>
         <tbody>
           {data?.map((material) => (
-            <MaterialRow material={material} />
+            <MaterialRow key={material._id} material={material} />
           ))}
         </tbody>
       </table>

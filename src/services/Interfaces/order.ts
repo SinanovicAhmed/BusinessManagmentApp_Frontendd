@@ -36,6 +36,6 @@ export interface IOrderMaterials {
 export interface IOrderPost {
   supplier_id: string;
   order_status: string;
-  expected_arrival: Date;
+  expected_arrival: string;
   ordered_materials: IMaterialOrderPost[];
 }

@@ -1,5 +1,5 @@
 import axios from "axios";
-import { IOrder, IOrderDB, IOrderMaterials, IOrderStatus } from "../Interfaces/order";
+import { IOrder, IOrderDB, IOrderMaterials, IOrderPost, IOrderStatus } from "../Interfaces/order";
 
 export const getOrders = async (): Promise<IOrder[]> => {
   const response = await axios.get("http://localhost:3000/api/order/get-orders", {
@@ -11,6 +11,18 @@ export const getOrders = async (): Promise<IOrder[]> => {
     },
   });
   return response.data.orders;
+};
+
+export const saveOrder = async (order: IOrderPost): Promise<string> => {
+  const response = await axios.post("http://localhost:3000/api/order/add-order", order, {
+    withCredentials: true,
+    headers: {
+      "Access-Control-Allow-Credentials": true,
+      "Access-Control-Allow-Origin": "http://localhost:5173",
+      "Content-Type": "application/json",
+    },
+  });
+  return response.data.message;
 };
 
 export const getOrderDetails = async (id: any): Promise<IOrder> => {

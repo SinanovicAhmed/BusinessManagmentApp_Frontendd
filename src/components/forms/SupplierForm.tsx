@@ -18,6 +18,8 @@ const initialSupplier = {
 
 export const SupplierForm = () => {
   const [supplier, setSupplier] = useState(initialSupplier);
+  const navigate = useNavigate();
+
   const { mutate } = useMutation((supplier: ISupplierPost) => addSupplier(supplier), {
     onSuccess: () => {
       toast.success("Employee added successfully");
@@ -29,7 +31,6 @@ export const SupplierForm = () => {
       }
     },
   });
-  const navigate = useNavigate();
 
   const updateSupplierInfo = (property: string, value: string | number) => {
     setSupplier((prevSupplier) => ({
