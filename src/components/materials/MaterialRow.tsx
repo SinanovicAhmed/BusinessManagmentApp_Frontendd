@@ -25,8 +25,7 @@ export const MaterialRow = ({ material }: { material: IMaterial }) => {
           <Link
             to={
               {
-                pathname: "/managment/" + material._id,
-                state: { id: material._id },
+                pathname: "/managment/addorder",
               } as To
             }
           >

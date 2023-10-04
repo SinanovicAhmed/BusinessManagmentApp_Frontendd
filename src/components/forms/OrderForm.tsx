@@ -101,6 +101,7 @@ export const OrderForm = ({ suppliers, materials }: Props) => {
             placeholder="eg. 20"
             type="number"
             id="name"
+            min={1}
             className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 
                        focus:border-blue-500 block w-full p-2.5"
             required
