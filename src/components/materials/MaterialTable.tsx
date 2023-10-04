@@ -8,6 +8,7 @@ export const MaterialTable = () => {
   const { data, isLoading, error } = useQuery("materials", getMaterials);
 
   if (isLoading) return <Loading />;
+  if (error) return <h2>Error fetching materials</h2>;
 
   return (
     <div className="relative overflow-x-auto shadow-md sm:rounded-lg">

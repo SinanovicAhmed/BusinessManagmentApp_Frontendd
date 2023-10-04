@@ -22,7 +22,6 @@ export const Sidebar = () => {
           <SideBarItem name="Orders" route="orders" icon={<FaClipboardList />} />
           <SideBarItem name="Materials" route="materials" icon={<GiMining />} />
           <SideBarItem name="Products" route="products" icon={<FaBoxOpen />} />
-          <SideBarItem name="Manufacturing" route="manufacturing" icon={<FaWrench />} />
           <SideBarItem name="Employees" route="employees" icon={<FaUsers />} />
         </ul>
         <ul className="pt-4 mt-4 space-y-2 border-t border-gray-200 dark:border-gray-700">
