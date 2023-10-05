@@ -24,3 +24,11 @@ export interface IMaterialProductPost {
   material: string;
   quantity: number;
 }
+
+export interface ICreateProduct {
+  product_id: string;
+  materials_needed: Array<{
+    material_id: string;
+    quantity: number;
+  }>;
+}
