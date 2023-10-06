@@ -16,6 +16,7 @@ import { OrderDetails } from "./pages/OrderDetails";
 import { AddSupplier } from "./pages/AddSupplier";
 import { AddOrder } from "./pages/AddOrder";
 import AddProduct from "./pages/AddProduct";
+import Suggestion from "./pages/Suggestion";
 const App = () => {
   return (
     <div>
@@ -39,6 +40,7 @@ const App = () => {
           <Route path="addemployee" element={<AddEmployee />} />
           <Route path="employeedetails/:id" element={<EmployeeDetails />} />
           <Route path="createaccount" element={<AddAccount />} />
+          <Route path="suggestions" element={<Suggestion />} />
         </Route>
       </Routes>
     </div>

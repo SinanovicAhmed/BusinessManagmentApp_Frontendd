@@ -1,9 +1,11 @@
 import { SideBarItem } from "./SidebarItem";
 import { RiDashboardFill } from "react-icons/ri";
 import { MdLogout } from "react-icons/md";
-import { FaTruck, FaBoxOpen, FaWrench, FaClipboardList, FaUsers } from "react-icons/fa";
+import { FaTruck, FaBoxOpen, FaClipboardList, FaUsers } from "react-icons/fa";
 import { GiMining } from "react-icons/gi";
+import { BiConversation } from "react-icons/bi";
 import { Link } from "react-router-dom";
+
 import appLogo from "../../assets/images/app-logo.png";
 
 export const Sidebar = () => {
@@ -23,6 +25,7 @@ export const Sidebar = () => {
           <SideBarItem name="Materials" route="materials" icon={<GiMining />} />
           <SideBarItem name="Products" route="products" icon={<FaBoxOpen />} />
           <SideBarItem name="Employees" route="employees" icon={<FaUsers />} />
+          <SideBarItem name="Suggestions" route="suggestions" icon={<BiConversation />} />
         </ul>
         <ul className="pt-4 mt-4 space-y-2 border-t border-gray-200 dark:border-gray-700">
           <SideBarItem name="Logout" route="/" icon={<MdLogout />} />
