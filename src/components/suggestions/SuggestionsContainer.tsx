@@ -19,9 +19,13 @@ const SuggestionsContainer = ({ type }: { type: string }) => {
 
   return (
     <div className="relative overflow-x-auto">
-      {data?.map((suggestion) => (
-        <SuggestionCard suggestion={suggestion} />
-      ))}
+      {data?.length === 0 ? (
+        <p className="w-full text-gray-600 text-center pt-5 ">
+          You dont have any suggestions. You can add one in form above.
+        </p>
+      ) : (
+        data?.map((suggestion) => <SuggestionCard suggestion={suggestion} key={suggestion._id} />)
+      )}
     </div>
   );
 };

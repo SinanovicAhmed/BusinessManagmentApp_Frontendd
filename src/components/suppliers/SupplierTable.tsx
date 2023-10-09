@@ -38,7 +38,7 @@ export const SupplierTable = () => {
         </thead>
         <tbody>
           {data?.map((supplier) => (
-            <SupplierRow {...supplier} />
+            <SupplierRow {...supplier} key={supplier._id} />
           ))}
         </tbody>
       </table>

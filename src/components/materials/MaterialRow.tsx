@@ -21,17 +21,16 @@ export const MaterialRow = ({ material }: { material: IMaterial }) => {
         )}
       </td>
       <td className="pl-2 py-4">
-        <a href="#" className="font-medium text-blue-600 hover:underline">
-          <Link
-            to={
-              {
-                pathname: "/managment/addorder",
-              } as To
-            }
-          >
-            Order
-          </Link>
-        </a>
+        <Link
+          className="font-medium text-blue-600 hover:underline"
+          to={
+            {
+              pathname: "/managment/addorder",
+            } as To
+          }
+        >
+          Order
+        </Link>
       </td>
     </tr>
   );

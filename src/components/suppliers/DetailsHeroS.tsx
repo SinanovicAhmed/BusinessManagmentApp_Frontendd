@@ -8,17 +8,12 @@ interface id {
 }
 
 export const DetailsHeroS = ({ id }: id) => {
-  const { isLoading, isError, data, error } = useQuery(`supplier-${id}`, () =>
-    getSupplierDetails(id)
-  );
-  console.log(data?.supplier_name);
-  console.log(data);
+  const { isLoading, isError, data, error } = useQuery(`supplier-${id}`, () => getSupplierDetails(id));
+
   if (isLoading) return <Loading />;
   return (
     <>
-      <h2 className="text-[30px] text-sky-800 font-bold uppercase py-5 ml-5">
-        {data?.supplier_name}
-      </h2>
+      <h2 className="text-[30px] text-sky-800 font-bold uppercase py-5 ml-5">{data?.supplier_name}</h2>
       <div className="w-[100%] max-w-[1500px] h-screen flex flex-col items-center">
         <div className="bg-gray-100 mb-[50px] w-[100%]">
           <div className="px-[20px]">

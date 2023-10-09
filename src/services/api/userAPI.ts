@@ -4,7 +4,7 @@ interface userLogin {
   username: string;
   password: string;
 }
-export const loginUser = async (user: userLogin) => {
+export const loginUser = async (user: userLogin): Promise<{ message: string; user: { role: string } }> => {
   const response = await axios.post("http://localhost:3000/api/user/login", user, {
     withCredentials: true,
     headers: {
@@ -14,7 +14,7 @@ export const loginUser = async (user: userLogin) => {
     },
   });
 
-  return response;
+  return response.data;
 };
 
 export const logoutUser = async () => {

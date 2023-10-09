@@ -13,18 +13,17 @@ export const SupplierRow = (props: ISupplier) => {
       <td className="px-4 py-4">{props.UID}</td>
       <td className="px-4 py-4">{props.VAT}</td>
       <td className="pl-2 py-4">
-        <a href="#" className="font-medium text-blue-600 hover:underline">
-          <Link
-            to={
-              {
-                pathname: "/managment/supplierdetails/" + props._id,
-                state: { id: props._id },
-              } as To
-            }
-          >
-            Details
-          </Link>
-        </a>
+        <Link
+          className="font-medium text-blue-600 hover:underline"
+          to={
+            {
+              pathname: "/managment/supplierdetails/" + props._id,
+              state: { id: props._id },
+            } as To
+          }
+        >
+          Details
+        </Link>
       </td>
     </tr>
   );

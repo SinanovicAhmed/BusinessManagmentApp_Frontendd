@@ -17,6 +17,9 @@ import { AddSupplier } from "./pages/AddSupplier";
 import { AddOrder } from "./pages/AddOrder";
 import AddProduct from "./pages/AddProduct";
 import Suggestion from "./pages/Suggestion";
+import Protected from "./components/Protected";
+import { parseCookie } from "./helpers/cookieParser";
+
 const App = () => {
   return (
     <div>
@@ -25,7 +28,14 @@ const App = () => {
         <Route path="login" element={<LoginPage />} />
         <Route path="managment/*" element={<MainPage />}>
           {/*Routes that need sidebar*/}
-          <Route path="dashboard" element={<Dashboard />} />
+          <Route
+            path="dashboard"
+            element={
+              <Protected roles={["ADMIN"]}>
+                <Dashboard />
+              </Protected>
+            }
+          />
           <Route path="suppliers" element={<Suppliers />} />
           <Route path="supplierdetails/:id" element={<SupplierDetails />} />
           <Route path="addsupplier" element={<AddSupplier />} />

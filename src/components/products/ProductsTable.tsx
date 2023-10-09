@@ -30,7 +30,7 @@ const ProductsTable = () => {
         </thead>
         <tbody>
           {data?.map((product) => (
-            <ProductRow product={product} />
+            <ProductRow product={product} key={product._id} />
           ))}
         </tbody>
       </table>

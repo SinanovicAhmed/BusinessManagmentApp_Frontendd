@@ -1,6 +1,9 @@
 import loginImage from "../assets/images/login-page-image.png";
 import { LoginForm } from "../components/forms/LoginForm";
+import { useQueryClient } from "react-query";
 export const LoginPage = () => {
+  const queryClient = useQueryClient();
+
   return (
     <div className="flex">
       <div className="hidden w-[60%] h-screen md:flex md:flex-col justify-between items-center bg-[#d6e8ff]">

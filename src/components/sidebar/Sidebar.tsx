@@ -11,18 +11,22 @@ import { useNavigate } from "react-router-dom";
 import { logoutUser } from "../../services/api/userAPI";
 import { toast } from "react-toastify";
 import axios from "axios";
+import { parseCookie } from "../../helpers/cookieParser";
 
 export const Sidebar = () => {
   const navigate = useNavigate();
   const queryClient = useQueryClient();
+  const parsed_user_data = parseCookie();
+  const role = parsed_user_data?.role;
 
-  const { data, refetch } = useQuery("logout", logoutUser, {
+  const { refetch } = useQuery("logout", logoutUser, {
     refetchOnWindowFocus: false,
     enabled: false,
+
     onSuccess: () => {
-      toast.success("You have successfully logged out.");
-      queryClient.invalidateQueries();
+      queryClient.removeQueries();
       navigate("/");
+      toast.success("You have successfully logged out.");
     },
     onError: (error) => {
       if (axios.isAxiosError(error)) {
@@ -41,12 +45,12 @@ export const Sidebar = () => {
           </span>
         </Link>
         <ul className="space-y-2 relative">
-          <SideBarItem name="Dashboard" route="dashboard" icon={<RiDashboardFill />} />
+          {role === "ADMIN" && <SideBarItem name="Dashboard" route="dashboard" icon={<RiDashboardFill />} />}
           <SideBarItem name="Suppliers" route="suppliers" icon={<FaTruck />} />
           <SideBarItem name="Orders" route="orders" icon={<FaClipboardList />} />
           <SideBarItem name="Materials" route="materials" icon={<GiMining />} />
           <SideBarItem name="Products" route="products" icon={<FaBoxOpen />} />
-          <SideBarItem name="Employees" route="employees" icon={<FaUsers />} />
+          {role === "ADMIN" && <SideBarItem name="Employees" route="employees" icon={<FaUsers />} />}
           <SideBarItem name="Suggestions" route="suggestions" icon={<BiConversation />} />
         </ul>
         <ul className="pt-4 mt-4 space-y-2 border-t border-gray-200 dark:border-gray-700">

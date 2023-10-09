@@ -38,7 +38,7 @@ const ProductRow = ({ product }: { product: IProduct }) => {
       <td className="px-3 py-4 w-[55%]">{product.product_desc}</td>
       <td className="pl-3 pr-10 py-3 flex flex-col max-w-[200px]">
         {product.materials_needed.map((product, index) => (
-          <div className="flex py-1">
+          <div className="flex py-1" key={index}>
             <p className="w-[80%]">{index + 1 + ". " + product.material.material_name}</p>
             <p className="w-[20%]">{product.quantity + product.material.unit_of_measure}</p>
           </div>

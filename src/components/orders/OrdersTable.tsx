@@ -38,7 +38,7 @@ export const OrdersTable = () => {
         </thead>
         <tbody>
           {data?.map((order) => (
-            <OrdersRow order={order} />
+            <OrdersRow order={order} key={order._id} />
           ))}
         </tbody>
       </table>
