@@ -9,7 +9,7 @@ const Suggestion = () => {
         <Header header="Your suggestions" paragraph="Manage your suggestions - delete old and add new ones" />
       </div>
       <SuggestionForm />
-      <SuggestionsContainer />
+      <SuggestionsContainer type="user" />
     </div>
   );
 };

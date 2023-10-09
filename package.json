@@ -9,8 +9,10 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@natscale/react-calendar": "^0.0.0-beta.26",
     "axios": "^1.2.2",
     "react": "^18.2.0",
+    "react-calendar": "^4.6.0",
     "react-dom": "^18.2.0",
     "react-icons": "^4.7.1",
     "react-query": "^3.39.2",

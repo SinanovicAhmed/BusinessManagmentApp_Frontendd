@@ -30,13 +30,13 @@ const SuggestionCard = ({ suggestion }: { suggestion: ISuggestion }) => {
 
   return (
     <div
-      className="w-[80] mx-5 my-4 shadow-lg rounded-lg hover:cursor-pointer
-                    transition ease-in-out delay-100 hover:bg-slate-200"
+      className="w-[80] mx-5 my-4 shadow-lg border-2 border-[#e8e8e8] rounded-md hover:cursor-pointer
+                    transition ease-in-out delay-100 hover:bg-slate-100"
     >
-      <div className="bg-slate-600 w-full flex justify-between px-2 rounded-t-lg">
-        <h2 className="text-[16px] text-white font-bold">
+      <div className="w-full flex justify-between px-2 rounded-t-lg border-b-2 border-[#e8e8e8]">
+        <h2 className="text-[15px] font-bold w-full flex justify-between">
           {suggestion.suggestion_title}
-          <span className="text-[15px] pl-10 font-normal">
+          <span className="text-[13px] pl-10 font-normal w-[25%]">
             suggested by {suggestion?.employee?.email_adress}
           </span>
         </h2>
@@ -44,7 +44,7 @@ const SuggestionCard = ({ suggestion }: { suggestion: ISuggestion }) => {
           <AiFillDelete size={20} />
         </button>
       </div>
-      <p className="p-2 text-gray-500">{suggestion.suggestion}</p>
+      <p className="p-2 text-[14px] text-gray-500">{suggestion.suggestion}</p>
     </div>
   );
 };

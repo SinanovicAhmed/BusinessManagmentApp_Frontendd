@@ -1,4 +1,6 @@
+import { useQuery, useQueryClient } from "react-query";
 import { NavLink } from "react-router-dom";
+import { logoutUser } from "../../services/api/userAPI";
 
 interface sidebarItem {
   name: string;
@@ -8,6 +10,7 @@ interface sidebarItem {
 
 export const SideBarItem = ({ name, icon, route }: sidebarItem) => {
   let style = "bg-gray-100 bg-gray-700";
+
   return (
     <li>
       <NavLink

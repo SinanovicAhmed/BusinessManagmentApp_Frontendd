@@ -1,17 +1,22 @@
 import { useQuery } from "react-query";
-import { getSuggestionsByID } from "../../services/api/suggestionAPI";
+import { getSuggestions, getSuggestionsByID } from "../../services/api/suggestionAPI";
 import { parseCookie } from "../../helpers/cookieParser";
 import SuggestionCard from "./SuggestionCard";
 import { Loading } from "../globalUI/Loading";
 
-const SuggestionsContainer = () => {
+const SuggestionsContainer = ({ type }: { type: string }) => {
   const parsed_user_data = parseCookie();
   const user_id = parsed_user_data.employee_id;
-  const { data, isLoading, isError, error } = useQuery(["suggestions", user_id], () =>
-    getSuggestionsByID(user_id)
-  );
+  const fetchSuggestions = (type: string) => {
+    if (type === "user") {
+      return useQuery(["suggestions", user_id], () => getSuggestionsByID(user_id));
+    } else {
+      return useQuery("suggestions", () => getSuggestions());
+    }
+  };
+  const { data, isLoading, isError, error } = fetchSuggestions(type);
   if (isLoading) return <Loading />;
-  console.log(data, user_id);
+
   return (
     <div className="relative overflow-x-auto">
       {data?.map((suggestion) => (
