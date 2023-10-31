@@ -1,3 +1,4 @@
+import { formatDate } from "../../helpers/formatDate";
 import { employee } from "../../services/api/employeeAPI";
 import { Link, To } from "react-router-dom";
 export const EmployeeRow = (props: employee) => {
@@ -9,15 +10,15 @@ export const EmployeeRow = (props: employee) => {
       <td className="px-6 py-4">{props.adress}</td>
       <td className="px-5 py-4">{props.email_adress}</td>
       <td className="px-4 py-4">{props.contact_num}</td>
-      <td className="px-4 py-4">{props.employment_date}</td>
+      <td className="px-4 py-4">{formatDate(props.employment_date)}</td>
       <td className="px-1.5 py-4">
-        {props.dismissal_date === "" ? (
+        {formatDate(props.dismissal_date) === "Jan 1, 1970" ? (
           <span className="bg-green-100 text-green-800 text-xs font-medium mr-2 px-2.5 py-0.5 rounded">
             Working
           </span>
         ) : (
           <span className="bg-red-100 text-red-800 text-xs font-medium mr-2 px-2.5 py-0.5 rounded">
-            Fired
+            Dismissed
           </span>
         )}
       </td>

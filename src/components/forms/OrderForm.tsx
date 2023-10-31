@@ -72,7 +72,7 @@ export const OrderForm = ({ suppliers, materials }: Props) => {
 
   return (
     <div className="w-full overflow-y-auto">
-      <form className="w-[100%] flex justify-around items-center" onSubmit={submitMaterial}>
+      <form className="w-[100%] px-5 flex justify-between items-center" onSubmit={submitMaterial}>
         <div className="mb-6 w-[45%]">
           <label className="block mb-2 text-sm font-medium text-gray-900">Material</label>
           <select
@@ -117,12 +117,16 @@ export const OrderForm = ({ suppliers, materials }: Props) => {
       </form>
       <h2 className="pl-5 text-[22px] font-bold text-gray-700">Added materials</h2>
       <div className="flex gap-2 pl-5">
-        {order.ordered_materials.map((material) => (
-          <div className="bg-gray-100 rounded-lg p-2 hover:bg-gray-200">
-            <h2>ID: {material.material_id}</h2>
-            <h2>Quantity: {material.quantity}</h2>
-          </div>
-        ))}
+        {order.ordered_materials.length === 0 ? (
+          <p className="text-gray-500">No materials added</p>
+        ) : (
+          order.ordered_materials.map((material) => (
+            <div className="bg-gray-100 rounded-lg p-2 hover:bg-gray-200">
+              <h2>ID: {material.material_id}</h2>
+              <h2>Quantity: {material.quantity}</h2>
+            </div>
+          ))
+        )}
       </div>
       <form onSubmit={submitOrder} className="w-[100%] p-5 flex flex-col items-center">
         <div className="mb-6 w-[45%]">

@@ -3,6 +3,7 @@ import { useMutation } from "react-query";
 import { addEmployees } from "../../services/api/employeeAPI";
 import { toast } from "react-toastify";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 interface IEmployee {
   name: string;
@@ -10,7 +11,7 @@ interface IEmployee {
   contact_num: string;
   adress: string;
   email_adress: string;
-  employment_date: string;
+  employment_date: Date;
 }
 const initialEmployee = {
   name: "",
@@ -18,25 +19,24 @@ const initialEmployee = {
   contact_num: "",
   adress: "",
   email_adress: "",
-  employment_date: "",
+  employment_date: new Date(),
 };
 export const EmployeeForm = () => {
   const [employee, setEmployee] = useState<IEmployee>(initialEmployee);
+  const navigate = useNavigate();
 
-  const { isLoading, isError, error, mutate } = useMutation(
-    (employee: IEmployee) => addEmployees(employee),
-    {
-      onSuccess: () => {
-        setEmployee(initialEmployee);
-        toast.success("Employee added successfully");
-      },
-      onError: (error) => {
-        if (axios.isAxiosError(error)) {
-          toast.error(error.response?.data.message);
-        }
-      },
-    }
-  );
+  const { isLoading, isError, error, mutate } = useMutation((employee: IEmployee) => addEmployees(employee), {
+    onSuccess: () => {
+      setEmployee(initialEmployee);
+      toast.success("Employee added successfully");
+      navigate(-1);
+    },
+    onError: (error) => {
+      if (axios.isAxiosError(error)) {
+        toast.error(error.response?.data.message);
+      }
+    },
+  });
   const updateName = (name: string) => {
     setEmployee((prevState) => ({ ...prevState, name: name }));
   };
@@ -52,10 +52,10 @@ export const EmployeeForm = () => {
   const updateEmail = (email: string) => {
     setEmployee((prevState) => ({ ...prevState, email_adress: email }));
   };
-  const updateDate = (date: string) => {
-    const datee = new Date(date);
-    const newDate = datee.toLocaleDateString();
-    setEmployee((prevState) => ({ ...prevState, employment_date: newDate }));
+  const updateDate = (dateInput: string) => {
+    const date = new Date(dateInput);
+
+    setEmployee((prevState) => ({ ...prevState, employment_date: date }));
   };
 
   return (

@@ -3,6 +3,7 @@ import { getEmployeeDetails } from "../../services/api/employeeAPI";
 import { Button } from "../globalUI/Button";
 import { Loading } from "../globalUI/Loading";
 import { useNavigate } from "react-router-dom";
+import { formatDate } from "../../helpers/formatDate";
 
 interface id {
   id: string | undefined;
@@ -10,12 +11,19 @@ interface id {
 
 export const DetailsHeroE = ({ id }: id) => {
   const { isLoading, isError, data, error } = useQuery(["employee", id], () => getEmployeeDetails(id));
-
+  const formatedEmploymentDate = data?.employee.employment_date
+    ? formatDate(data?.employee.employment_date)
+    : "";
+  const formatedDismissalDate = data?.employee.dismissal_date
+    ? formatDate(data?.employee.dismissal_date)
+    : "";
   const navigate = useNavigate();
 
   const createAccount = () => {
     navigate("/managment/createaccount", { state: id });
   };
+
+  const handleDismissal = () => {};
 
   if (isLoading) return <Loading />;
   return (
@@ -68,13 +76,15 @@ export const DetailsHeroE = ({ id }: id) => {
             <p className="text-md text-gray-500">Email:</p>
             <p className="mb-2 text-lg font-medium">{data?.employee.email_adress}</p>
             <p className="text-,d text-gray-500">Employment Date:</p>
-            <p className="mb-2 text-lg font-medium">{data?.employee.employment_date}</p>
+            <p className="mb-2 text-lg font-medium">{formatedEmploymentDate}</p>
             <p className="text-md text-gray-500">Dismisal Date:</p>
-            <p className="mb-2 text-lg font-medium">{data?.employee.dismissal_date}</p>
+            <p className="mb-2 text-lg font-medium">
+              {formatedDismissalDate === "Jan 1, 1970" ? "No dismissal date" : formatedDismissalDate}
+            </p>
           </span>
         </div>
 
-        <Button name="Update details" type="button" />
+        <Button name="Dismiss employee" type="button" onClick={handleDismissal} />
       </div>
     </div>
   );

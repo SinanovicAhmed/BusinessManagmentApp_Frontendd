@@ -6,6 +6,7 @@ import { addProduct } from "../../services/api/productAPI";
 import { toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
+import { Loading } from "../globalUI/Loading";
 
 const initialMaterial = {
   material: "",
@@ -32,6 +33,8 @@ const ProductForm = ({ materials }: { materials: IMaterial[] }) => {
       }
     },
   });
+
+  if (isLoading) return <Loading />;
 
   const submitMaterial = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -63,7 +66,7 @@ const ProductForm = ({ materials }: { materials: IMaterial[] }) => {
 
   return (
     <div className="w-full overflow-y-auto">
-      <form className="w-[100%] flex justify-around items-center" onSubmit={submitMaterial}>
+      <form className="w-[100%] px-5 flex justify-between items-center" onSubmit={submitMaterial}>
         <div className="mb-6 w-[45%]">
           <label className="block mb-2 text-sm font-medium text-gray-900">Material</label>
           <select
@@ -109,12 +112,16 @@ const ProductForm = ({ materials }: { materials: IMaterial[] }) => {
 
       <h2 className="pl-5 text-[22px] font-bold text-gray-700">Added materials</h2>
       <div className="flex gap-2 pl-5">
-        {product.materials_needed.map((material) => (
-          <div className="bg-gray-100 rounded-lg p-2 hover:bg-gray-200">
-            <h2>ID: {material.material}</h2>
-            <h2>Quantity: {material.quantity}</h2>
-          </div>
-        ))}
+        {product.materials_needed.length === 0 ? (
+          <p className="text-gray-700">No materials added</p>
+        ) : (
+          product.materials_needed.map((material) => (
+            <div className="bg-gray-100 rounded-lg p-2 hover:bg-gray-200">
+              <h2>ID: {material.material}</h2>
+              <h2>Quantity: {material.quantity}</h2>
+            </div>
+          ))
+        )}
       </div>
 
       <form onSubmit={submitProduct} className="w-[100%] p-5 mt-20 flex flex-col items-center">
